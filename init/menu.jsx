@@ -2,6 +2,7 @@ import React from 'react';
 import {Icon, Menu, Card, Button} from 'antd';
 import UserManage from '../include/userManage'
 import pub from '../js/pub.js';
+import Logo from './logo';
 import $ from 'jquery';
 
 const SubMenu = Menu.SubMenu;
@@ -11,7 +12,8 @@ class MenuShow extends React.Component {
         collapsed: false,
         current: 'firstPage',
         batchId: null,
-        butcherId: null
+        butcherId: null,
+        showLogo: true
     }
     toggleCollapsed = () => {
         let a = this.state.collapsed
@@ -46,16 +48,35 @@ class MenuShow extends React.Component {
     componentWillMount() {
     }
 
+    componentDidMount() {
+        let a = this
+        setTimeout(function () {
+            $('#logo-div').animate({opacity: 0}, 'slow', function () {
+                console.log("come in 2")
+                a.setState({
+                    showLogo: false,
+                });
+            });
+        }, 1800);
+        setTimeout(function () {
+            $('#menu').animate({opacity: 1}, 'slow', function () {
+                console.log("come in 2")
+            });
+        }, 2200);
+
+    }
+
     render() {
         return (
             <div>
-                <div className="ant-layout ant-layout-has-sider">
+                {this.state.showLogo == true && <Logo id="logo-div"/>}
+                <div className="ant-layout ant-layout-has-sider" id="menu" style={{opacity: 0}}>
                     <div id="div-menu" className=" index__sider___1tQnn ant-layout-sider"
                          style={{flex: '0 0 256px', width: 256}}>
                         <div className="ant-layout-sider-children">
                             <div className="index__logo___1Bu95">
                                 <img alt="logo"
-                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529005850189&di=be4e8a6caa8a6d6a91906da2e0f0e281&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0178315a44b3eba8012197419a8972.png%401280w_1l_2o_100sh.png"/>
+                                     src="images/logo2.png"/>
                                 <h1 style={{fontSize: 25, marginLeft: 5}}>web base</h1>
                             </div>
                             <Menu

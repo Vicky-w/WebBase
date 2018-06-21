@@ -5,9 +5,12 @@
   },
   "dependencies": {
     "antd": "^3.0.0",
+    "enquire-js": "^0.2.1",
     "jquery": "^3.3.1",
     "md5": "^2.2.1",
     "moment": "^2.19.3",
+    "prop-types": "^15.6.2",
+    "rc-tween-one": "^2.0.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
@@ -38,7 +41,7 @@
   "scripts": {
     "build": "atool-build",
     "lint": "eslint --ext .js,.jsx src/",
-    "start": "dora --plugins webpack",
+    "start": "dora --plugins webpack --port=8000",
     "test": "atool-test-mocha ./**/__tests__/*-test.js"
   }
 }
